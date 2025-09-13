@@ -19,9 +19,9 @@ router.get("/tests", async (req, res) => {
 router.get("/tests/:id", async (req, res) => {
   try {
     const results = await Result.find({ test: req.params.id })
-      .populate("test", "title description totalMarks") // only populate test, not student
+      .populate("test", "title description totalMarks").sort({percentage:-1}) // only populate test, not student
       .sort({ createdAt: -1 });
-      console.log(results)
+      // console.log(results)
 
     // Format data (no need to populate student since you store name/email already)
     const formattedResults = results.map(r => ({

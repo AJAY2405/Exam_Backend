@@ -39,7 +39,7 @@ export const register = async (req, res) => {
 // ------------------------- LOGIN ------------------------
 export const login = async (req, res) => {
   try {
-    console.log("Login attempt", req.body);
+    // console.log("Login attempt", req.body);
     const { email, password} = req.body;
     if (!email || !password) {
       return res.status(400).json({ message: "All fields are required", success: false });
@@ -47,7 +47,7 @@ export const login = async (req, res) => {
 
     // Find user
     let user = await User.findOne({ email });
-    console.log("User found:", user);
+    // console.log("User found:", user);
 
     if (!user) {
       return res.status(400).json({ message: "Incorrect email or password", success: false });
@@ -181,4 +181,43 @@ export const getCurrentUser = async (req, res) => {
   }
 };
 
+
+
+
+
+
+// ------------------------- UPDATE DESCRIPTION ------------------------
+export const updateDescription = async (req, res) => {
+  try {
+    const { description } = req.body;
+    const userId = req.id; // ✅ this comes from authMiddleware after verifying JWT
+
+    if (!description) {
+      return res.status(400).json({ message: "Description is required", success: false });
+    }
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found", success: false });
+    }
+
+    user.description = description;
+    await user.save();
+
+    return res.status(200).json({
+      success: true,
+      message: "Description updated successfully",
+      user: {
+        _id: user._id,
+        fullname: user.fullname,
+        email: user.email,
+        role: user.role,
+        description: user.description,
+      },
+    });
+  } catch (error) {
+    console.error("Update Description Error:", error);
+    return res.status(500).json({ message: "Server error", success: false });
+  }
+};
 

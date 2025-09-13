@@ -8,6 +8,9 @@ import testRoutes from "./routes/test_routes.js";
 import studentTestRoutes from "./routes/studentTestRoutes.js";
 import resultRoutes from "./routes/results_routes.js"
 import noteRoutes from "./routes/note.routes.js"
+import classRoutes from "./routes/classRoutes.js";
+import studentRoutes from "./routes/studentRoutes.js";
+import noticeRoutes from "./routes/noticeRoutes.js"; // ✅ changed require -> import
 
 dotenv.config({});
 
@@ -39,6 +42,10 @@ app.use("/api/v1/tests", testRoutes);
 app.use("/api/v1/student/tests", studentTestRoutes);
 app.use("/api/v1/results", resultRoutes);
 app.use("/api/v1/notes", noteRoutes);
+app.use('/api/classes', classRoutes);
+app.use('/api/students', studentRoutes);
+app.use("/api/v1/notices", noticeRoutes);
+
 
 "http://localhost:8000/api/v1/user/register"
 "http://localhost:8000/api/v1/user/login"

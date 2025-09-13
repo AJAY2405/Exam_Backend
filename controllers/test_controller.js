@@ -31,10 +31,10 @@ export const getAllTests = async (req, res) => {
 export const getTestsByTeacher = async (req, res) => {
   try {
     const { teacherId } = req.params;
-    console.log("Backend Teacher ID:", teacherId); // 👈 add this
+    // console.log("Backend Teacher ID:", teacherId); // 👈 add this
 
     const tests = await Test.find({ teacher: teacherId });
-    console.log("Backend Found Tests:", tests); // 👈 add this
+    // console.log("Backend Found Tests:", tests); // 👈 add this
 
     res.json({ tests });
   } catch (error) {
