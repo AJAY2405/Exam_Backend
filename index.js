@@ -18,7 +18,10 @@ const app = express();
 
 
 app.use(cors({
-  origin: "http://localhost:5173", // frontend URL
+  origin: [
+  "http://localhost:5173",
+  "https://exam-frontend-beta.vercel.app"
+], // frontend URL
   // origin: "exam-frontend-beta.vercel.app", // frontend URL
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   credentials: true
@@ -48,9 +51,9 @@ app.use('/api/students', studentRoutes);
 app.use("/api/v1/notices", noticeRoutes);
 
 
-"http://localhost:8000/api/v1/user/register"
-"http://localhost:8000/api/v1/user/login"
-"http://localhost:8000/api/v1/user/profile/update"
+// "http://localhost:8000/api/v1/user/register"
+// "http://localhost:8000/api/v1/user/login"
+// "http://localhost:8000/api/v1/user/profile/update"
 
 
 const PORT=process.env.PORT ||10000;
