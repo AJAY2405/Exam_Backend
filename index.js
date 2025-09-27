@@ -18,8 +18,8 @@ const app = express();
 
 
 app.use(cors({
-  // origin: "http://localhost:5173", // frontend URL
-  origin: "exam-frontend-beta.vercel.app", // frontend URL
+  origin: "http://localhost:5173", // frontend URL
+  // origin: "exam-frontend-beta.vercel.app", // frontend URL
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   credentials: true
 }));
