@@ -2,7 +2,7 @@ import { User } from "../models/user_model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-const isProduction = process.env.NODE_ENV === "production";
+// const isProduction = process.env.NODE_ENV === "production";
 
 // ------------------------- REGISTER ------------------------
 export const register = async (req, res) => {
@@ -84,10 +84,10 @@ export const login = async (req, res) => {
     return res
       .status(200)
       .cookie("token", token, {
-        maxAge: 7 * 24 * 60 * 60 * 1000,
         httpOnly: true,
-        sameSite: isProduction ? "none" : "lax",
-        secure: isProduction
+        secure: true, // because you're on https (Vercel + Render)
+        sameSite: "none", // important for cross-site cookies
+        maxAge: 1* 24 * 60 * 60 * 1000,
       })
       .json({
         message: `Welcome back ${safeUser.fullname}`,
