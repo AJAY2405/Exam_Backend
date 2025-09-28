@@ -2,7 +2,7 @@ import { User } from "../models/user_model.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
-// const isProduction = process.env.NODE_ENV === "production";
+ const isProduction = process.env.NODE_ENV === "production";
 
 // ------------------------- REGISTER ------------------------
 export const register = async (req, res) => {
