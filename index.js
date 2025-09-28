@@ -20,7 +20,7 @@ const app = express();
 app.use(cors({
   origin: [
   "http://localhost:5173",
-  "https://exam-frontend-lilac.vercel.app/"
+  "https://exam-frontend-lilac.vercel.app"
 ], // frontend URL
   // origin: "exam-frontend-beta.vercel.app", // frontend URL
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
