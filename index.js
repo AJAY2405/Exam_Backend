@@ -51,9 +51,9 @@ app.use('/api/students', studentRoutes);
 app.use("/api/v1/notices", noticeRoutes);
 
 
-// "http://localhost:8000/api/v1/user/register"
-// "http://localhost:8000/api/v1/user/login"
-// "http://localhost:8000/api/v1/user/profile/update"
+"http://localhost:8000/api/v1/user/register"
+"http://localhost:8000/api/v1/user/login"
+"http://localhost:8000/api/v1/user/profile/update"
 
 
 const PORT=process.env.PORT ||10000;
